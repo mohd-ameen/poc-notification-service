@@ -1,0 +1,22 @@
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: poc-notification-service
+  labels:
+    app: poc-notification-service
+spec:
+  replicas: 2  # Number of desired instances
+  selector:
+    matchLabels:
+      app: poc-notification-service
+  template:
+    metadata:
+      labels:
+        app: poc-notification-service
+    spec:
+      containers:
+      - name: poc-notification-service
+        image: mameen1/poc-notification-app:1.0  # Docker image
+        ports:
+        - containerPort: 8080  # Expose the app port inside the container

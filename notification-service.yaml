@@ -1,0 +1,15 @@
+# service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: notification-service
+spec:
+  selector:
+    app: poc-notification-service
+  ports:
+    - protocol: TCP
+      port: 80          # Expose the service on port 80
+      targetPort: 8080  # The container’s port that the service forwards to
+  type: LoadBalancer    # Expose the service as a LoadBalancer (for cloud environments)
+  externalIPs:
+  - 192.168.0.10
